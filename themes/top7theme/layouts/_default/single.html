@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <article>
+    {{ with .Params.featuredImage }}
+      <img src="{{ . }}" alt="Featured Image" style="max-width: 100%; height: auto;" />
+    {{ end }}
+
+    <h1>{{ .Title }}</h1>
+
+    <div>
+      {{ .Content }}
+    </div>
+  </article>
+{{ end }}
