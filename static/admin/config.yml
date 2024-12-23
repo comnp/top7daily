@@ -1,6 +1,8 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: comnp/top7daily
   branch: main
+  auth_endpoint: "https://decapcms.org/proxy"
 
 media_folder: "static/images"
 public_folder: "/images"
@@ -12,18 +14,9 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
-  - name: "pages"
-    label: "Pages"
-    folder: "content"
-    create: true
-    slug: "{{slug}}"
-    filter: { field: "type", value: "page" }
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+    - label: "Title"
+      name: "title"
+      widget: "string"
+    - label: "Body"
+      name: "body"
+      widget: "markdown"

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CMS</title>
+  <meta charset="utf-8" />
+</head>
+<body>
+  <!-- Netlify Identity (for Git Gateway) -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js">
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('init', user => {
+      if (!user) {
+        window.netlifyIdentity.on('login', () => {
+          document.location.reload();
+        });
+      }
+    });
+  }
+</script>
+  <!-- The Netlify CMS (or Decap CMS) script -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+</body>
+</html>
