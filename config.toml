@@ -8,3 +8,37 @@ theme = "7dailyTheme"
 for = "/admin/*"
 [server.headers.values]
   Access-Control-Allow-Origin = ["*"]
+
+[params.author]
+name = "Abbal Dhakal"
+bio = "Running Away from Reality"
+
+[params]
+  enableComments = true
+  enableMailingList = true
+  enableSocialSharing = true
+
+  # Mailing List Configurations
+  [params.mailingList]
+    providers = ["mailchimp", "convertkit", "sendinblue"] # Available providers
+    mailchimpAction = "https://your-mailchimp-url.com"
+    convertkitAction = "https://your-convertkit-url.com"
+    sendinblueAction = "https://your-sendinblue-url.com"
+
+  # Comment System Configurations
+  [params.comments]
+    providers = ["disqus", "giscus", "facebook", "commento"] # Available providers
+    disqusShortname = "your-disqus-shortname"
+    giscusRepo = "your-username/your-repo"
+    giscusMapping = "pathname"
+    facebookAppID = "your-facebook-app-id"
+    commentoURL = "https://your-commento-instance.com"
+
+  # Social Sharing Configurations
+  [params.socialSharing]
+    platforms = ["twitter", "facebook", "linkedin", "pinterest", "whatsapp"]
+
+  # Analytics
+  [params.analytics]
+    googleAnalyticsID = "UA-XXXXX-Y"
+    plausibleURL = "https://plausible.io"

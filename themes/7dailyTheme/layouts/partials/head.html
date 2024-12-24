@@ -1,5 +1,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
-{{ partialCached "head/css.html" . }}
-{{ partialCached "head/js.html" . }}
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+
+<!-- OpenGraph -->
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ .Summary }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="article">
+<meta property="og:image" content="{{ .Params.featuredImage }}">
+
+<!-- JSON-LD for Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ .Title }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.author.name }}"
+  },
+  "datePublished": "{{ .Date }}"
+}
+</script>

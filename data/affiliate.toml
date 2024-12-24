@@ -1,0 +1,10 @@
+[platforms.amazon]
+  partnerID = "your_amazon_partner_id"
+  linkFormat = "https://www.amazon.com/dp/{{product_id}}?tag={{partnerID}}"
+
+[platforms.ebay]
+  partnerID = "your_ebay_partner_id"
+  linkFormat = "https://www.ebay.com/itm/{{product_id}}?campid={{partnerID}}"
+
+[platforms.generic]
+  linkFormat = "{{base_url}}?ref={{partnerID}}"

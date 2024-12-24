@@ -1,22 +1,36 @@
-body {
-  color: #222;
-  font-family: sans-serif;
-  line-height: 1.5;
-  margin: 1rem;
-  max-width: 768px;
+.social-sharing ul,
+.related-posts ul {
+  list-style: none;
+  padding: 0;
 }
 
-header {
-  border-bottom: 1px solid #222;
-  margin-bottom: 1rem;
+.social-sharing li,
+.related-posts li {
+  margin: 5px 0;
 }
 
-footer {
-  border-top: 1px solid #222;
-  margin-top: 1rem;
+.mailing-list form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
 }
 
-a {
-  color: #00e;
-  text-decoration: none;
+.mailing-list input {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.mailing-list button {
+  padding: 8px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mailing-list button:hover {
+  background-color: #0056b3;
 }

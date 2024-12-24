@@ -1,10 +1,164 @@
-{{ define "main" }}
-  <h1>{{ .Title }}</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  {{ partial "header.html" . }}
 
-  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+  <main>
+    <article class="post">
+      <!-- Post Title -->
+      <h1>{{ .Title }}</h1>
 
-  {{ .Content }}
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
-{{ end }}
+      <!-- Post Date -->
+      <p class="post-date">
+        Published on {{ .Date | dateFormat "January 2, 2006" }}
+      </p>
+
+      <!-- Post Categories -->
+      {{ with .Params.categories }}
+      <p class="post-categories">
+        Categories:
+        {{ range . }}
+          <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>{{ if not (last .) }}, {{ end }}
+        {{ end }}
+      </p>
+      {{ end }}
+
+      <!-- Post Tags -->
+      {{ with .Params.tags }}
+      <p class="post-tags">
+        Tags:
+        {{ range . }}
+          <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>{{ if not (last .) }}, {{ end }}
+        {{ end }}
+      </p>
+      {{ end }}
+
+      <!-- Post Content -->
+      <div class="post-content">
+        {{ .Content }}
+      </div>
+
+      <!-- Affiliate Links -->
+      {{ with .Params.affiliateLinks }}
+      <section class="affiliate-links">
+        <h2>Buy Now</h2>
+        <ul>
+          {{ range . }}
+          <li>
+            <a href="{{ printf (index $.Site.Data.affiliate.platforms .platform).linkFormat .product_id }}" target="_blank" rel="nofollow">
+              {{ .platform | title }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </section>
+      {{ end }}
+
+      <!-- Social Sharing -->
+      {{ with site.Data.settings.socialSharing }}
+      {{ if .enableSocialSharing }}
+      <section class="social-sharing">
+        <h2>Share this post</h2>
+        <ul>
+          {{ range .platforms }}
+          {{ if eq . "twitter" }}
+          <li><a href="https://twitter.com/intent/tweet?text={{ $.Title }}&url={{ $.Permalink }}" target="_blank">Twitter</a></li>
+          {{ end }}
+          {{ if eq . "facebook" }}
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ $.Permalink }}" target="_blank">Facebook</a></li>
+          {{ end }}
+          {{ if eq . "linkedin" }}
+          <li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $.Permalink }}" target="_blank">LinkedIn</a></li>
+          {{ end }}
+          {{ if eq . "pinterest" }}
+          <li><a href="https://pinterest.com/pin/create/button/?url={{ $.Permalink }}" target="_blank">Pinterest</a></li>
+          {{ end }}
+          {{ if eq . "whatsapp" }}
+          <li><a href="https://api.whatsapp.com/send?text={{ $.Permalink }}" target="_blank">WhatsApp</a></li>
+          {{ end }}
+          {{ end }}
+        </ul>
+      </section>
+      {{ end }}
+      {{ end }}
+
+      <!-- Mailing List -->
+      {{ with site.Data.settings.mailingList }}
+      {{ if .enableMailingList }}
+      <section class="mailing-list">
+        <h2>Subscribe to Our Newsletter</h2>
+        {{ range .providers }}
+        {{ if eq . "mailchimp" }}
+        <form action="{{ .mailchimpAction }}" method="post">
+          <input type="email" name="EMAIL" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        {{ end }}
+        {{ if eq . "convertkit" }}
+        <form action="{{ .convertkitAction }}" method="post">
+          <input type="email" name="EMAIL" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        {{ end }}
+        {{ if eq . "sendinblue" }}
+        <form action="{{ .sendinblueAction }}" method="post">
+          <input type="email" name="EMAIL" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        {{ end }}
+        {{ end }}
+      </section>
+      {{ end }}
+      {{ end }}
+
+      <!-- Comments -->
+      {{ with site.Data.settings.comments }}
+      {{ if .enableComments }}
+      <section class="comments">
+        <h2>Comments</h2>
+        {{ range .providers }}
+        {{ if eq . "disqus" }}
+        <div id="disqus_thread"></div>
+        <script>
+          var disqus_config = function () {
+            this.page.url = "{{ $.Permalink }}";
+            this.page.identifier = "{{ $.File.UniqueID }}";
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://{{ .disqusShortname }}.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+        {{ end }}
+        {{ if eq . "giscus" }}
+        <script src="https://giscus.app/client.js"
+                data-repo="{{ .giscusRepo }}"
+                data-mapping="{{ .giscusMapping }}"
+                data-theme="light"
+                crossOrigin="anonymous"
+                async>
+        </script>
+        {{ end }}
+        {{ if eq . "facebook" }}
+        <div class="fb-comments" data-href="{{ $.Permalink }}" data-width="100%" data-numposts="5"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId={{ .facebookAppID }}"></script>
+        {{ end }}
+        {{ if eq . "commento" }}
+        <div id="commento"></div>
+        <script src="{{ .commentoURL }}/js/commento.js"></script>
+        {{ end }}
+        {{ end }}
+      </section>
+      {{ end }}
+      {{ end }}
+    </article>
+  </main>
+
+  {{ partial "footer.html" . }}
+</body>
+</html>
