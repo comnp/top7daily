@@ -20,8 +20,8 @@
       {{ with .Params.categories }}
       <p class="post-categories">
         Categories:
-        {{ range . }}
-          <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>{{ if not (last .) }}, {{ end }}
+        {{ range $index, $category := . }}
+          <a href="{{ "/categories/" | relLangURL }}{{ $category | urlize }}">{{ $category }}</a>{{ if lt (add $index 1) (len .) }}, {{ end }}
         {{ end }}
       </p>
       {{ end }}
@@ -30,8 +30,8 @@
       {{ with .Params.tags }}
       <p class="post-tags">
         Tags:
-        {{ range . }}
-          <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>{{ if not (last .) }}, {{ end }}
+        {{ range $index, $tag := . }}
+          <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}">{{ $tag }}</a>{{ if lt (add $index 1) (len .) }}, {{ end }}
         {{ end }}
       </p>
       {{ end }}

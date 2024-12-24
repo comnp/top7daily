@@ -1,0 +1,26 @@
+{
+    "enableComments": true,
+    "enableMailingList": true,
+    "enableSocialSharing": true,
+    "mailingList": {
+      "providers": ["mailchimp", "convertkit", "sendinblue"],
+      "mailchimpAction": "https://your-mailchimp-url.com",
+      "convertkitAction": "https://your-convertkit-url.com",
+      "sendinblueAction": "https://your-sendinblue-url.com"
+    },
+    "comments": {
+      "providers": ["disqus", "giscus", "facebook", "commento"],
+      "disqusShortname": "your-disqus-shortname",
+      "giscusRepo": "your-username/your-repo",
+      "giscusMapping": "pathname",
+      "facebookAppID": "your-facebook-app-id",
+      "commentoURL": "https://your-commento-instance.com"
+    },
+    "socialSharing": {
+      "platforms": ["twitter", "facebook", "linkedin", "pinterest", "whatsapp"]
+    },
+    "analytics": {
+      "googleAnalyticsID": "UA-XXXXX-Y",
+      "plausibleURL": "https://plausible.io"
+    }
+  }
