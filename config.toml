@@ -5,3 +5,6 @@ theme = "top7theme"
 
 [params]
   # Any custom parameters you might need in the future
+
+[[module.imports]]
+  path = "github.com/tinacms/hugo-tinacms"
