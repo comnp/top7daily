@@ -1,6 +1,3 @@
-baseURL = "http://top7daily.com/"
-languageCode = "en-us"
-title = "Top7Daily"
-theme = "top7theme"
-
-# We'll add more configuration here later
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'

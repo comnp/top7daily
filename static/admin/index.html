@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <title>Decap CMS</title>
-</head>
-<body>
-  <!-- Load the Decap CMS script from unpkg -->
-  <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Stelvetia CMS</title>
+  </head>
+  <body>
+    <script>
+      window.STELVETIA_CONFIG = {
+        backend: {
+          name: "github",
+          repo: "comnp/top7daily", // Replace with your GitHub username/repo
+          branch: "main",
+          auth: {
+            client_id: "Ov23liGb11JUHifsJtx3", // Replace with your GitHub Client ID
+            redirect_uri: "/admin/oauth/callback",
+          },
+        },
+      };
+    </script>
+    <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>/script>
+  </body>
 </html>
