@@ -1,9 +1,25 @@
 {
-  "dependencies": {
-    "@tinacms/cli": "^1.7.0",
-    "tinacms": "^2.5.2"
+  "name": "top7daily",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "@types/node": "^22.10.2"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comnp/top7daily.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/comnp/top7daily/issues"
+  },
+  "homepage": "https://github.com/comnp/top7daily#readme",
+  "description": "",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tinacms": "^2.5.2"
   }
 }
