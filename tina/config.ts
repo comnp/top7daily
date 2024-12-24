@@ -10,100 +10,84 @@ export default defineConfig({
   },
   schema: {
     collections: [
-      // Existing Posts Collection
+      // Posts Collection
       {
-        name: "posts", // Collection name
-        label: "Posts", // Admin panel label
-        path: "content/posts", // Path where posts are stored
+        name: "posts",
+        label: "Posts",
+        path: "content/posts",
         fields: [
           {
             name: "title",
             label: "Title",
-            type: "string", // Title of the content
+            type: "string",
           },
           {
             name: "date",
             label: "Date",
-            type: "datetime", // Date of publication
+            type: "datetime",
           },
           {
             name: "categories",
             label: "Categories",
             type: "string",
-            list: true, // Enable multiple categories
+            list: true,
           },
           {
             name: "tags",
             label: "Tags",
             type: "string",
-            list: true, // Enable multiple tags
+            list: true,
           },
           {
             name: "contentType",
             label: "Content Type",
             type: "string",
-            options: ["Product", "Service", "Blog"], // Restrict to specific types
+            options: ["Product", "Service", "Blog"],
           },
           {
             name: "affiliateLinks",
             label: "Affiliate Links",
             type: "object",
-            list: true, // Allow multiple affiliate links
+            list: true,
             fields: [
-              {
-                name: "platform",
-                label: "Platform",
-                type: "string",
-              },
-              {
-                name: "product_id",
-                label: "Product ID",
-                type: "string",
-              },
+              { name: "platform", label: "Platform", type: "string" },
+              { name: "product_id", label: "Product ID", type: "string" },
             ],
           },
           {
             name: "customFields",
             label: "Custom Fields",
             type: "object",
-            list: true, // Allow multiple custom fields
+            list: true,
             fields: [
-              {
-                name: "key",
-                label: "Field Key",
-                type: "string",
-              },
-              {
-                name: "value",
-                label: "Field Value",
-                type: "string",
-              },
+              { name: "key", label: "Field Key", type: "string" },
+              { name: "value", label: "Field Value", type: "string" },
             ],
           },
         ],
       },
 
-      // New Site Settings Collection
+      // Site Settings Collection
       {
-        name: "settings", // Collection name
-        label: "Site Settings", // Admin panel label
-        path: "content/settings", // Path for global site settings
-        format: "json", // Format for storing the settings file
+        name: "settings",
+        label: "Site Settings",
+        path: "content/settings",
+        format: "json", // Storing settings in JSON format
         fields: [
           {
             name: "enableComments",
             label: "Enable Comments",
-            type: "boolean", // Toggle for comments
+            type: "boolean",
           },
           {
             name: "enableMailingList",
             label: "Enable Mailing List",
-            type: "boolean", // Toggle for mailing list
+            type: "boolean",
           },
           {
             name: "enableSocialSharing",
             label: "Enable Social Sharing",
-            type: "boolean", // Toggle for social sharing
+            type: "boolean",
           },
           {
             name: "mailingList",
@@ -117,9 +101,21 @@ export default defineConfig({
                 list: true,
                 options: ["mailchimp", "convertkit", "sendinblue"],
               },
-              { name: "mailchimpAction", label: "Mailchimp Action URL", type: "string" },
-              { name: "convertkitAction", label: "ConvertKit Action URL", type: "string" },
-              { name: "sendinblueAction", label: "Sendinblue Action URL", type: "string" },
+              {
+                name: "mailchimpAction",
+                label: "Mailchimp Action URL",
+                type: "string",
+              },
+              {
+                name: "convertkitAction",
+                label: "ConvertKit Action URL",
+                type: "string",
+              },
+              {
+                name: "sendinblueAction",
+                label: "Sendinblue Action URL",
+                type: "string",
+              },
             ],
           },
           {
@@ -134,11 +130,31 @@ export default defineConfig({
                 list: true,
                 options: ["disqus", "giscus", "facebook", "commento"],
               },
-              { name: "disqusShortname", label: "Disqus Shortname", type: "string" },
-              { name: "giscusRepo", label: "Giscus Repository", type: "string" },
-              { name: "giscusMapping", label: "Giscus Mapping", type: "string" },
-              { name: "facebookAppID", label: "Facebook App ID", type: "string" },
-              { name: "commentoURL", label: "Commento URL", type: "string" },
+              {
+                name: "disqusShortname",
+                label: "Disqus Shortname",
+                type: "string",
+              },
+              {
+                name: "giscusRepo",
+                label: "Giscus Repository",
+                type: "string",
+              },
+              {
+                name: "giscusMapping",
+                label: "Giscus Mapping",
+                type: "string",
+              },
+              {
+                name: "facebookAppID",
+                label: "Facebook App ID",
+                type: "string",
+              },
+              {
+                name: "commentoURL",
+                label: "Commento URL",
+                type: "string",
+              },
             ],
           },
           {
@@ -160,8 +176,16 @@ export default defineConfig({
             label: "Analytics",
             type: "object",
             fields: [
-              { name: "googleAnalyticsID", label: "Google Analytics ID", type: "string" },
-              { name: "plausibleURL", label: "Plausible Analytics URL", type: "string" },
+              {
+                name: "googleAnalyticsID",
+                label: "Google Analytics ID",
+                type: "string",
+              },
+              {
+                name: "plausibleURL",
+                label: "Plausible Analytics URL",
+                type: "string",
+              },
             ],
           },
         ],
